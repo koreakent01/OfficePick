@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>오피스픽 | 공유오피스 찾기</title>
-  <!-- 메인 스타일 -->
+  <title>Sea-Cast | 해양 예측 출조 가이드</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- 카카오 맵 SDK -->
   <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=074a8461d988924bb608d7bca605dce3&libraries=services"></script>
-  <!-- 메인 스크립트 -->
   <script src="script.js" defer></script>
 </head>
 <body>
   <header class="header">
     <div class="header-left">
-      <a href="index.html" class="logo">오피스픽</a>
-      <span class="tagline">대한민국 공유오피스 탐색 플랫폼</span>
+      <a href="index.html" class="logo">Sea-Cast</a>
+      <span class="tagline">해양환경 기반 낚시 포인트 예측 플랫폼</span>
     </div>
     <nav class="nav">
       <a href="index.html" class="nav-link active">홈</a>
@@ -24,51 +21,51 @@
   </header>
 
   <main>
-    <!-- 히어로 섹션 -->
     <section class="hero">
       <div class="hero-text">
-        <h1>내 주변 <span>공유오피스</span>를 한눈에</h1>
-        <p>위치 기반으로 나와 잘 맞는 공유오피스를 찾아보고, 리뷰 확인 후 바로 예약까지 진행해 보세요.</p>
+        <h1>내 주변 <span>예측 포인트</span>를 한눈에</h1>
+        <p>수온, 해류, 위성환경, 선박활동 패턴을 바탕으로 오늘 유망한 출조 포인트를 확인해 보세요.</p>
+
         <div class="search-section">
           <input
             type="text"
             id="searchInput"
-            placeholder="예) 강남, 홍대, 위워크, 패스트파이브"
+            placeholder="예) 오이도, 소래포구, 연안부두, 광어, 우럭"
           />
           <button id="searchBtn">검색</button>
         </div>
+
         <div class="quick-filters">
-          <button class="chip" data-keyword="강남">#강남</button>
-          <button class="chip" data-keyword="홍대">#홍대</button>
-          <button class="chip" data-keyword="위워크">#위워크</button>
-          <button class="chip" data-keyword="패스트파이브">#패스트파이브</button>
+          <button class="chip" data-keyword="오이도">#오이도</button>
+          <button class="chip" data-keyword="소래포구">#소래포구</button>
+          <button class="chip" data-keyword="연안부두">#연안부두</button>
+          <button class="chip" data-keyword="인천">#인천</button>
         </div>
       </div>
+
       <div class="hero-card">
-        <p class="hero-badge">실시간 위치 기반</p>
-        <p class="hero-card-title">현재 위치 주변 공유오피스 탐색</p>
+        <p class="hero-badge">실시간 해양환경 기반</p>
+        <p class="hero-card-title">현재 위치 주변 예측 포인트 탐색</p>
         <p class="hero-card-desc">
           브라우저 위치 접근을 허용하면<br/>
-          내 위치를 기준으로 지도를 자동으로 맞춰 드려요.
+          내 위치를 기준으로 유망한 출조 포인트를 자동으로 보여드려요.
         </p>
       </div>
     </section>
 
-    <!-- 지도 섹션 -->
     <section class="map-section">
       <div id="map"></div>
     </section>
 
-    <!-- 리스트 & 정렬 -->
     <section class="list-section container">
       <div class="list-header">
-        <h2>추천 공유오피스</h2>
+        <h2>추천 출조 포인트</h2>
         <div class="list-controls">
           <span id="officeCount">총 0개</span>
           <select id="sortSelect">
             <option value="default">정렬: 기본</option>
-            <option value="rating">별점 높은 순</option>
-            <option value="priceLow">가격 낮은 순</option>
+            <option value="rating">추천도 높은 순</option>
+            <option value="priceLow">예측지수 낮은 순</option>
           </select>
         </div>
       </div>
@@ -79,28 +76,27 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <div>© 2025 OfficePick. All rights reserved.</div>
+      <div>© 2026 Sea-Cast. All rights reserved.</div>
       <div class="footer-links">
         <a href="about.html">서비스 소개</a>
-        <a href="mailto:officepick.dev@gmail.com">Contact</a>
+        <a href="mailto:seacast.dev@gmail.com">Contact</a>
       </div>
     </div>
   </footer>
 
-  <!-- 상세 / 리뷰 / 예약 모달 -->
   <div class="modal" id="detailModal">
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-content">
       <button class="modal-close" id="modalCloseBtn">✕</button>
 
-      <h2 id="modalOfficeName">오피스 상세 정보</h2>
+      <h2 id="modalOfficeName">포인트 상세 정보</h2>
       <p id="modalLocation" class="modal-sub"></p>
       <p id="modalPrice" class="modal-sub"></p>
       <p id="modalRating" class="modal-sub"></p>
 
       <hr />
 
-      <h3>⭐ 리뷰 남기기</h3>
+      <h3>⭐ 포인트 후기</h3>
       <div class="rating" id="ratingStars">
         <span data-value="1">★</span>
         <span data-value="2">★</span>
@@ -108,19 +104,19 @@
         <span data-value="4">★</span>
         <span data-value="5">★</span>
       </div>
-      <textarea id="reviewText" placeholder="후기를 입력해 주세요 (예: 인터넷 속도, 소음, 분위기 등)"></textarea>
+      <textarea id="reviewText" placeholder="후기를 입력해 주세요 (예: 조류, 수심, 입질 반응, 접근성 등)"></textarea>
 
-      <h3>📅 예약하기</h3>
+      <h3>📅 출조 일정 메모</h3>
       <div class="reservation-row">
         <input type="date" id="reserveDate" />
         <select id="reserveTime">
+          <option value="05:00">05:00</option>
           <option value="09:00">09:00</option>
-          <option value="13:00">13:00</option>
           <option value="17:00">17:00</option>
         </select>
       </div>
 
-      <button class="btn primary" id="reserveSubmitBtn">예약 완료</button>
+      <button class="btn primary" id="reserveSubmitBtn">일정 저장</button>
     </div>
   </div>
 </body>

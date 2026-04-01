@@ -1,40 +1,40 @@
-// 공유오피스 데이터
+// Sea-Cast 예측 포인트 데이터
 const offices = [
   {
     id: 1,
-    name: "위워크 삼성점",
-    location: "서울 강남구 삼성로 512",
-    lat: 37.510374,
-    lng: 127.058817,
-    rating: 4.5,
-    price: 350000,
-    priceLabel: "월 ₩350,000~",
-    image: "images/wework.jpeg",
-    areaTag: "강남"
+    name: "오이도 연안 포인트",
+    location: "경기 시흥시 오이도 인근",
+    lat: 37.3485,
+    lng: 126.6890,
+    rating: 4.6,
+    price: 82,
+    priceLabel: "예측지수 82점",
+    image: "images/oido.jpg",
+    areaTag: "시흥"
   },
   {
     id: 2,
-    name: "패스트파이브 역삼 2호점",
-    location: "서울 강남구 테헤란로 201",
-    lat: 37.500328,
-    lng: 127.035701,
-    rating: 4.3,
-    price: 300000,
-    priceLabel: "월 ₩300,000~",
-    image: "images/fast.jpeg",
-    areaTag: "강남"
+    name: "소래포구 포인트",
+    location: "인천 남동구 소래포구 인근",
+    lat: 37.3988308,
+    lng: 126.7403795,
+    rating: 4.4,
+    price: 76,
+    priceLabel: "예측지수 76점",
+    image: "images/sorae.jpg",
+    areaTag: "인천"
   },
   {
     id: 3,
-    name: "로컬스페이스 홍대",
-    location: "서울 마포구 양화로 135",
-    lat: 37.556019,
-    lng: 126.922134,
-    rating: 4.7,
-    price: 250000,
-    priceLabel: "월 ₩250,000~",
-    image: "images/local.jpeg",
-    areaTag: "홍대"
+    name: "연안부두 포인트",
+    location: "인천 중구 연안부두 인근",
+    lat: 37.455182,
+    lng: 126.602346,
+    rating: 4.2,
+    price: 71,
+    priceLabel: "예측지수 71점",
+    image: "images/yeonan.jpg",
+    areaTag: "인천"
   }
 ];
 
